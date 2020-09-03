@@ -65,6 +65,7 @@ public class NoteList : MonoBehaviour
             return;
         }
         int index = Notes.Count;
+        name = "笔记-" + index;
         Debug.Log("NoteList.AddNote index: " + index);
         Note note = new Note
         {
@@ -79,10 +80,12 @@ public class NoteList : MonoBehaviour
         Debug.Log("NoteList.AddNote button: " + name);
         button.transform.SetParent(this.transform);
         Debug.Log(this.transform.position.x + ", " + this.transform.position.y);
-        button.GetComponent<Text>().text = guid;
+        button.GetComponent<Text>().text = name;
         button.GetComponent<Text>().font = this.gameObject.GetComponent<Text>().font;
-        button.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 20);
-        button.GetComponent<RectTransform>().position = new Vector3(this.transform.position.x + 110, this.transform.position.y - (index + 1) * 20);
+        button.GetComponent<Text>().fontSize = 30;
+        button.GetComponent<Text>().color = Color.black;
+        button.GetComponent<RectTransform>().sizeDelta = new Vector2(500, 60);
+        button.GetComponent<RectTransform>().position = new Vector3(this.transform.position.x + 400, this.transform.position.y - (index + 1) * 60);
         Debug.Log("NoteList.AddNote y : " + (index * 20));
         Button _btn = button.GetComponent<Button>();
         _btn.onClick.AddListener(() =>
