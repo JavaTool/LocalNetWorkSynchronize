@@ -37,6 +37,18 @@ public class NoteList : MonoBehaviour
         });
     }
 
+    public void Clear()
+    {
+        Debug.Log("NoteList.Clear.");
+        Notes.Clear();
+        int childCount = this.transform.childCount;
+        Debug.Log("childCount = " + childCount);
+        for (int i = childCount - 1; i >= 0; i--)
+        {
+            Destroy(this.transform.GetChild(i).gameObject);
+        }
+    }
+
     public void AddNote()
     {
         string guid = Guid.NewGuid().ToString();
@@ -70,7 +82,7 @@ public class NoteList : MonoBehaviour
         button.GetComponent<Text>().text = guid;
         button.GetComponent<Text>().font = this.gameObject.GetComponent<Text>().font;
         button.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 20);
-        button.GetComponent<RectTransform>().position = new Vector3(this.transform.position.x, this.transform.position.y - index * 20);
+        button.GetComponent<RectTransform>().position = new Vector3(this.transform.position.x + 110, this.transform.position.y - (index + 1) * 20);
         Debug.Log("NoteList.AddNote y : " + (index * 20));
         Button _btn = button.GetComponent<Button>();
         _btn.onClick.AddListener(() =>
