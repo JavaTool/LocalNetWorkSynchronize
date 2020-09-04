@@ -366,6 +366,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Text: {fileID: 1291214750}
+  inputField: {fileID: 2120652348}
+  udp: {fileID: 939970559}
 --- !u!114 &174296085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,7 +781,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -218, y: 471}
+  m_AnchoredPosition: {x: -53, y: 405}
   m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &725881401
@@ -990,8 +992,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -796.7, y: -68.25}
-  m_SizeDelta: {x: 490.7, y: 943.5}
+  m_AnchoredPosition: {x: -638.2, y: -46}
+  m_SizeDelta: {x: 443.6, y: 778}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1108910937
 MonoBehaviour:
@@ -1228,6 +1230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Text: {fileID: 0}
+  inputField: {fileID: 0}
+  udp: {fileID: 0}
 --- !u!1 &1291214749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,7 +1570,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 392856049}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99997383
+  m_Size: 0.9999997
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1726,7 +1730,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -823.1, y: 471}
+  m_AnchoredPosition: {x: -660, y: 405}
   m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1738138608
@@ -1905,7 +1909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000036024117}
+  m_AnchoredPosition: {x: 0, y: -0.000029621066}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1755312735
@@ -2041,8 +2045,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 11, y: 0}
-  m_SizeDelta: {x: 188.2, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1789433612
 MonoBehaviour:
@@ -2415,8 +2419,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 251.37, y: -68.25}
-  m_SizeDelta: {x: 1605.4, y: 943.5}
+  m_AnchoredPosition: {x: 226.1, y: -46}
+  m_SizeDelta: {x: 1285, y: 778}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2120652348
 MonoBehaviour:
@@ -2473,7 +2477,18 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 174296084}
+        m_MethodName: OnContentChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: TMPro.TMP_InputField+SubmitEvent, Unity.TextMeshPro, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_OnSubmit:
@@ -2503,7 +2518,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: TMPro.TMP_InputField+OnChangeEvent, Unity.TextMeshPro, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}

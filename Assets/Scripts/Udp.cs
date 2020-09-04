@@ -44,7 +44,7 @@ public class Udp : MonoBehaviour
         messageReceive = true;
         Debug.Log("Udp.ReceiveCallback msg : " + msg);
         string[] sArray = msg.Split('|');
-        noteList.SyncNote(sArray[0], sArray[1], sArray[2]);
+        noteList.SyncNote(sArray[0], sArray[1], sArray[2], sArray[3]);
     }
 
     private void RecvThread()

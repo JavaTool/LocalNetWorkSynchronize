@@ -5,6 +5,9 @@ using TMPro;
 public class NoteContent : MonoBehaviour
 {
     public TextMeshProUGUI m_Text;
+    public TMP_InputField inputField;
+    public Udp udp;
+    private Note note;
     private string content = "  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus ac nisl a "
         +"\r\n" + "rutrum. In vel elit at justo convallis pharetra. Aliquam sit amet scelerisque nisl,"
         +"\r\n" + " sed tempor velit. Morbi mattis lorem lorem, id ornare orci lacinia sit amet. Morbi "
@@ -32,9 +35,20 @@ public class NoteContent : MonoBehaviour
         
     }
 
+    public void OnContentChange()
+    {
+        Debug.Log("NoteContent.OnContentChange : " + inputField.text);
+        if (note != null)
+        {
+            note.Content = inputField.text;
+            udp.BroadThread(System.Text.Encoding.Default.GetBytes("U|" + note.Guid + "|" + note.Name + "|" + note.Content));
+        }
+    }
+
     public void ShowContent(Note note)
     {
+        this.note = note;
         Debug.Log("NoteContent.ShowContent : " + note.Content);
-        m_Text.text = content;
+        m_Text.text = note.Content;
     }
 }

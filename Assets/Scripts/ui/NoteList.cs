@@ -10,6 +10,8 @@ public class NoteList : MonoBehaviour
     public Udp udp;
     private IDictionary<string, Note> Notes { set; get; }
     private ConcurrentQueue<Note> inQueue = new ConcurrentQueue<Note>();
+    private string currentNoteGuid;
+    private string updateNoteGuid;
 
     // Start is called before the first frame update
     void Start()
@@ -24,17 +26,37 @@ public class NoteList : MonoBehaviour
         if (inQueue.TryDequeue(out note))
         {
             AddNote(note.Guid, note.Name, note.Content);
+        } 
+        else if (updateNoteGuid != null)
+        {
+            noteContent.ShowContent(Notes[updateNoteGuid]);
+            updateNoteGuid = null;
         }
     }
 
-    public void SyncNote(string guid, string name, string content)
+    public void SyncNote(string op, string guid, string name, string content)
     {
-        inQueue.Enqueue(new Note
+        if (op == "C")
         {
-            Guid = guid,
-            Content = content,
-            Name = name
-        });
+            inQueue.Enqueue(new Note
+            {
+                Guid = guid,
+                Content = content,
+                Name = name
+            });
+        }
+        else
+        {
+            if (Notes.ContainsKey(guid))
+            {
+                Debug.Log("NoteList.Update." + currentNoteGuid + " and " + guid);
+                Notes[guid].Content = content;
+                if (currentNoteGuid == guid)
+                {
+                    updateNoteGuid = guid;
+                }
+            }
+        }
     }
 
     public void Clear()
@@ -53,7 +75,7 @@ public class NoteList : MonoBehaviour
     {
         string guid = Guid.NewGuid().ToString();
         AddNote(guid, guid, guid);
-        udp.BroadThread(System.Text.Encoding.Default.GetBytes(guid + "|" + guid + "|" + guid));
+        udp.BroadThread(System.Text.Encoding.Default.GetBytes("C|" + guid + "|" + guid + "|" + guid));
     }
 
     public void AddNote(string guid, string name, string content)
@@ -91,6 +113,7 @@ public class NoteList : MonoBehaviour
         _btn.onClick.AddListener(() =>
         {
             Debug.Log("NoteList.ClickNote : " + note.ToString());
+            currentNoteGuid = note.Guid;
             noteContent.ShowContent(note);
         });
     }
