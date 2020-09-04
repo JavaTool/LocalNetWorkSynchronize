@@ -49,6 +49,6 @@ public class NoteContent : MonoBehaviour
     {
         this.note = note;
         Debug.Log("NoteContent.ShowContent : " + note.Content);
-        m_Text.text = note.Content;
+        inputField.text = note.Content;
     }
 }
